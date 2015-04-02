@@ -1,0 +1,9 @@
+{
+  "VERSION": "v1",
+
+  "RESOURCES": {
+    "STOP": {
+      "CONTROLLER": ""
+    }
+  }
+}

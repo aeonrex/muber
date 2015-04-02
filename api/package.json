@@ -1,0 +1,17 @@
+{
+  "name": "Muber",
+  "version": "0.1.0",
+  "description": "Departure times for local public transportation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "taylor kisor-smith",
+  "license": "MIT",
+  "dependencies": {
+    "engine": "0.0.1"
+  },
+  "scripts": {
+    "setup": "npm link ../engine"
+  }
+}
