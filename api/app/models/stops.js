@@ -4,21 +4,30 @@ var mongoose = require('engine').mongoose,
     dataProvider = require('../dataProviders/stops');
 
 var stopModel = new mongoose.Schema({
-    nextBusId: {
-        type: Number,
-        unique: true
+    stopId: {
+        type: Number
     },
 
     loc: {
         type: {
             type: String
         },
-        coordinates: []
+        coordinates: {
+            type: [Number]
+        }
     },
 
     name: {
         type: String
-    }
+    },
+
+    routes: {
+        type: Array
+    },
+
+    agency: String
 });
 
-module.exports = dataProvider(mongoose.model('Stop', stopModel));
+stopModel.index({loc: '2dsphere'});
+
+module.exports = new dataProvider(mongoose.model('Stop', stopModel));

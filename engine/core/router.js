@@ -37,7 +37,8 @@ module.exports = function (controllers) {
     util._.forEach(resources, function (resource) {
 
         if (!resource.CONTROLLER || !resource.ROUTES) {
-            throw new Error('Malformed route configurations');
+            console.error('Malformed route configurations... skipping');
+            return;
         }
 
         var controller = controllers[resource.CONTROLLER];

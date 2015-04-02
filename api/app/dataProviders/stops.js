@@ -4,7 +4,7 @@ function StopsDataProvider(model) {
     this.model = model;
 }
 
-StopsDataProvider.create = function (nextBusId, name, long, lat, callback) {
+/*StopsDataProvider.prototype.create = function (nextBusId, name, long, lat, callback) {
     this.model.create({
         nextBustId: nextBusId,
         loc: {
@@ -13,6 +13,13 @@ StopsDataProvider.create = function (nextBusId, name, long, lat, callback) {
         },
         name: name
     }, callback);
+};*/
+
+StopsDataProvider.prototype.batchInsert = function (array, callback) {
+    this.model.collection.insert(array, function (err, doc) {
+        if (err) throw err;
+        callback(doc);
+    });
 };
 
 module.exports = StopsDataProvider;

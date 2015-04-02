@@ -4,14 +4,13 @@
   "description": "Departure times for local public transportation",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "setup": "npm link ../engine"
   },
   "author": "taylor kisor-smith",
   "license": "MIT",
   "dependencies": {
-    "engine": "0.0.1"
-  },
-  "scripts": {
-    "setup": "npm link ../engine"
+    "async": "^0.9.0",
+    "engine": "0.0.1",
+    "xml2js": "^0.4.6"
   }
 }
