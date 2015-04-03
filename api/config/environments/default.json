@@ -1,9 +1,17 @@
 {
   "VERSION": "v1",
-
+  "SERVER_PORT": 8080,
   "RESOURCES": {
     "STOP": {
-      "CONTROLLER": ""
+      "CONTROLLER": "stops",
+      "ROUTES": {
+        "/stops": [
+          {
+            "METHOD": "GET",
+            "VALUE": "getMany"
+          }
+        ]
+      }
     }
   }
 }

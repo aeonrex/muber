@@ -215,5 +215,7 @@ engine.bootstrap({}, null, function () {
                 callback();
             }
         }
-    ]);
+    ], function () {
+        process.exit();
+    });
 });
