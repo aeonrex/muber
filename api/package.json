@@ -2,7 +2,7 @@
   "name": "Muber",
   "version": "0.1.0",
   "description": "Departure times for local public transportation",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "setup": "npm link ../engine"
   },

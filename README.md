@@ -24,3 +24,19 @@ Queries
   }
 }
 ```
+
+
+.aggregate([
+   {
+     $geoNear: {
+        near: { type: "Point", coordinates: [  -122.41737 , 37.8072499 ] },
+        distanceField: "dist.calculated",
+        maxDistance: 300,
+        minDistance: 0,
+        query: {},
+        includeLocs: "dist.location",
+        num: 100,
+        spherical: true
+     }
+   }
+])

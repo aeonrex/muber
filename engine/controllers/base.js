@@ -5,8 +5,8 @@
  * @param dataProvider
  * @constructor
  */
-function BaseApiController(dataProvider) {
-    this.dataProvider = dataProvider;
+function BaseApiController(model) {
+    this.model = model;
 }
 
 
