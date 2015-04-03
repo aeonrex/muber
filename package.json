@@ -2,19 +2,27 @@
   "name": "engine",
   "version": "0.0.1",
   "description": "Tool set and server bootstrap for vvps backend services / api.",
-  "main": "server.js",
+  "main": "api/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha app/test/",
+    "start": "node api/server.js"
   },
   "author": "Taylor Kisor-Smith",
   "dependencies": {
+    "async": "^0.9.0",
     "restify": "^2.8.4",
-    "mongoose": "^3.8.21",
+    "mongoose": "4.0.1",
     "lodash": "^3.6.0",
     "nconf": "^0.7.1",
     "url": "^0.10.2",
     "glob": "^4.3.5",
     "path": "^0.11.14",
-    "fs": "0.0.2"
+    "fs": "0.0.2",
+    "xml2js": "^0.4.6"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.1",
+    "should": "^5.2.0",
+    "supertest": "^0.15.0"
   }
 }

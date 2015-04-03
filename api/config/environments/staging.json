@@ -1,0 +1,4 @@
+{
+  "SERVER_PORT": 7777,
+  "DB_URI": "mongodb://muber-api:thed4t4ismine@ds045511.mongolab.com:45511/muber"
+}
