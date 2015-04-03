@@ -1,8 +1,9 @@
 'use strict';
-var BaseApiController = require('engine').controllers.base,
+var engine = require('../../../engine/server'),
+    BaseApiController = engine.controllers.base,
     stopsModel = require('../models/stops'),
     StopsApiController = new BaseApiController(stopsModel),
-    errors = require('engine').errors;
+    errors = engine.errors;
 
 StopsApiController.getMany = function (req, res, next) {
     var query = req.query;
