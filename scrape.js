@@ -1,7 +1,7 @@
 'use strict';
 
 var async = require('async'),
-    engine = require('../engine/server'),
+    engine = require('rest-engine'),
     util = engine.util,
     request = require('request'),
     requestOptions = {

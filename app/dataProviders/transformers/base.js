@@ -1,5 +1,5 @@
 'use strict';
-var _ = require('../../../../engine/server').util._;
+var _ = require('rest-engine').util._;
 
 module.exports = {
 

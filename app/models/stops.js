@@ -1,6 +1,6 @@
 'use strict';
 
-var mongoose = require('../../../engine/server').mongoose,
+var mongoose = require('rest-engine').mongoose,
     dataProvider = require('../dataProviders/stops');
 
 var stopModel = new mongoose.Schema({

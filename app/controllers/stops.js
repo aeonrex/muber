@@ -1,5 +1,5 @@
 'use strict';
-var engine = require('../../../engine/server'),
+var engine = require('rest-engine'),
     BaseApiController = engine.controllers.base,
     stopsModel = require('../models/stops'),
     StopsApiController = new BaseApiController(stopsModel),
