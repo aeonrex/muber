@@ -1,6 +1,6 @@
 'use strict';
 
-var engine = require('../engine/server');
+var engine = require('rest-engine');
 
 engine.bootstrap({
     name: 'muber',

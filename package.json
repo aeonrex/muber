@@ -2,22 +2,15 @@
   "name": "engine",
   "version": "0.0.1",
   "description": "Tool set and server bootstrap for vvps backend services / api.",
-  "main": "api/server.js",
+  "main": "server.js",
   "scripts": {
-    "test": "mocha app/test/",
-    "start": "node api/server.js"
+    "test": "mocha --recursive test/",
+    "start": "node server.js"
   },
   "author": "Taylor Kisor-Smith",
   "dependencies": {
     "async": "^0.9.0",
-    "restify": "^2.8.4",
-    "mongoose": "4.0.1",
-    "lodash": "^3.6.0",
-    "nconf": "^0.7.1",
-    "url": "^0.10.2",
-    "glob": "^4.3.5",
-    "path": "^0.11.14",
-    "fs": "0.0.2",
+    "engine": "git+ssh://git@github.com:t4ks/rest-engine.git#master",
     "xml2js": "^0.4.6"
   },
   "devDependencies": {
