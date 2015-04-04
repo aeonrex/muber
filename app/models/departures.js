@@ -1,3 +1,4 @@
-/**
- * Created by taylorks on 4/3/15.
- */
+'use strict';
+var dataProvider = require('../dataProviders/departures');
+
+module.exports = new dataProvider({});

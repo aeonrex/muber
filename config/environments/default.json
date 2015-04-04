@@ -22,7 +22,7 @@
     "DEPARTURE": {
       "CONTROLLER": "departures",
       "ROUTES": {
-        "/departures/stop/:id": [
+        "/stops/:id/departures": [
           {
             "METHOD": "GET",
             "VALUE": "getForStop"
