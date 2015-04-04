@@ -12,6 +12,17 @@
           }
         ]
       }
+    },
+    "DEPARTURE": {
+      "CONTROLLER": "departures",
+      "ROUTES": {
+        "/departures/stop/:id": [
+          {
+            "METHOD": "GET",
+            "VALUE": "getForStop"
+          }
+        ]
+      }
     }
   }
 }
