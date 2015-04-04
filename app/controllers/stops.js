@@ -7,20 +7,29 @@ var engine = require('rest-engine'),
     milesToMeters = require('../../lib/conversions').milesToMeters,
     errors = engine.errors;
 
-StopsApiController.getMany = function (req, res, next) {
-    var query = req.query;
 
+var queryCheck = function (query) {
     if (!query.longitude || !query.latitude) {
-        return next(new errors.BadRequestError('Invalid query params: Expected both longitude and latitude'));
+        return -1;
     }
 
     if (isNaN(query.longitude) || isNaN(query.latitude)) {
-        return next(new errors.BadRequestError('Invalid query params: Expected numbers'));
+        return -2;
     }
-
     query.longitude = parseFloat(query.longitude);
     query.latitude = parseFloat(query.latitude);
     query.distance = isNaN(query.distance) ? 300 : milesToMeters(parseFloat(query.distance));
+    return query;
+};
+
+StopsApiController.getMany = function (req, res, next) {
+    var query = queryCheck(req.query);
+
+    if (query === -1) {
+        return next(new errors.BadRequestError('Invalid query params: Expected both longitude and latitude'));
+    } else if (query === -2) {
+        return next(new errors.BadRequestError('Invalid query params: Expected numbers'));
+    }
 
     log('GET /stops');
     log(JSON.stringify(query));
@@ -41,6 +50,7 @@ StopsApiController.getOne = function (req, res, next) {
     if (!id) {
         return next(new errors.BadRequestError('Invalid stop id'));
     }
+
     log('GET /stops/' + id);
     StopsApiController.model.getOne(id, function (err, stop) {
         if (err) {
