@@ -10,6 +10,12 @@
             "METHOD": "GET",
             "VALUE": "getMany"
           }
+        ],
+        "/stops/:id": [
+          {
+            "METHOD": "GET",
+            "VALUE": "getOne"
+          }
         ]
       }
     },
