@@ -18,32 +18,33 @@ function distanceTransform(distance) {
     return distance;
 }
 
+var oneOut = function (result) {
+    result.location = result.loc;
+    result.location.coordinates = coordinateTransform(result.location.coordinates);
+    delete result.loc;
+    delete result.location.type;
+    return base.oneOut(result);
+};
+
+var manyOut = function (results, query) {
+    var out = base.manyOut(results);
+
+    _.forEach(out.results, function (result) {
+        result = oneOut(result);
+        result.distance = distanceTransform(result.distance);
+    });
+
+    out.location = {
+        longitude: query.longitude,
+        latitude: query.latitude
+    };
+    return out;
+};
 
 module.exports = {
 
-    manyOut: function (results, query) {
-        var out = base.manyOut(results);
+    oneOut: oneOut,
 
-        _.forEach(out.results, function (result) {
-            result.location = result.loc;
-            result.location.coordinates = coordinateTransform(result.location.coordinates);
-            delete result.loc;
-            delete result.location.type;
-            result.distance = distanceTransform(result.distance);
-        });
+    manyOut: manyOut
 
-        out.location = {
-            longitude: query.longitude,
-            latitude: query.latitude
-        };
-        return out;
-    },
-
-    oneOut: function (result) {
-        result.location = result.loc;
-        result.location.coordinates = coordinateTransform(result.location.coordinates);
-        delete result.loc;
-        delete result.location.type;
-        return base.oneOut(result);
-    }
 };
