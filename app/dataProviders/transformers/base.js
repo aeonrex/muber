@@ -13,5 +13,12 @@ module.exports = {
             count: results.length,
             results: results
         };
+    },
+
+    oneOut: function (result) {
+        result.id = result._id;
+        delete result._id;
+        console.log(result);
+        return result;
     }
 };
