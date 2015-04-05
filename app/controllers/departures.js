@@ -8,10 +8,15 @@ var engine = require('rest-engine'),
 
 DeparturesApiController.getForStop = function (req, res, next) {
     var stopId = req.params.id;
-    DeparturesApiController.model.getMany(stopId);
     log('GET departures');
-    res.status(200);
-    res.json({hello: 'world'});
+
+    DeparturesApiController.model.getMany(stopId, function (err, departures) {
+        if (err) {
+            return next(new errors.InternalError('Failure when getting departures'));
+        }
+        res.status(200);
+        res.json(departures);
+    });
 };
 
 module.exports = DeparturesApiController;
