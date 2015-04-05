@@ -1,8 +1,9 @@
 'use strict';
 
-var _ = require('rest-engine').util._,
+var util = require('rest-engine').util,
     base = require('./base'),
-    metersToMiles = require('../../../lib/conversions').metersToMiles;
+    resource = 'stops',
+    metersToMiles = require(process.cwd() + '/lib/conversions').metersToMiles;
 
 function coordinateTransform(coord) {
     return {
@@ -21,16 +22,21 @@ function distanceTransform(distance) {
 var oneOut = function (result) {
     result.location = result.loc;
     result.location.coordinates = coordinateTransform(result.location.coordinates);
+
     delete result.loc;
     delete result.location.type;
-    return base.oneOut(result);
+
+    result = base.oneOut(result, resource);
+    result.departures = util.jsonCopy(result.self);
+    result.departures.href += '/departures';
+    return result;
 };
 
 var manyOut = function (results, query) {
     var out = base.manyOut(results);
 
-    _.forEach(out.results, function (result) {
-        result = oneOut(result);
+    util._.forEach(out.results, function (result) {
+        result = oneOut(result, resource);
         result.distance = distanceTransform(result.distance);
     });
 
