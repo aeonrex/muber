@@ -17,6 +17,28 @@
             "VALUE": "getOne"
           }
         ]
+      },
+      "ERRORS": {
+        "400.0": {
+          "message": "Invalid stop id.",
+          "http": 400
+        },
+        "400.1": {
+          "message": "Invalid query params: Expected both longitude and latitude",
+          "http": 400
+        },
+        "400.2": {
+          "message": "Invalid query params: Expected numbers",
+          "http": 400
+        },
+        "404.0": {
+          "message": "Stop could not be found",
+          "http": 404
+        },
+        "500.0": {
+          "message": "Internal Database Error: Stops",
+          "http": 500
+        }
       }
     },
     "DEPARTURE": {
@@ -28,6 +50,16 @@
             "VALUE": "getForStop"
           }
         ]
+      },
+      "ERRORS": {
+        "500.0": {
+          "message": "Service request failed",
+          "http": 500
+        },
+        "502.0": {
+          "message": "Unexpected upstream request failure",
+          "http": 502
+        }
       }
     }
   }

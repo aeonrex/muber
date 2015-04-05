@@ -4,39 +4,28 @@ var engine = require('rest-engine'),
     BaseApiController = engine.controllers.base,
     stopsModel = require('../models/stops'),
     StopsApiController = new BaseApiController(stopsModel),
-    milesToMeters = require('../../lib/conversions').milesToMeters,
-    errors = engine.errors;
+    milesToMeters = require(process.cwd() + '/lib/conversions').milesToMeters,
+    errors = require(process.cwd() + '/lib/errors');
 
+StopsApiController.getMany = function (req, res, next) {
+    var query = req.query;
 
-var queryCheck = function (query) {
     if (!query.longitude || !query.latitude) {
-        return -1;
+        return next(errors('stop', '400.1'));
     }
 
     if (isNaN(query.longitude) || isNaN(query.latitude)) {
-        return -2;
+        return next(errors('stop', '400.2'));
     }
     query.longitude = parseFloat(query.longitude);
     query.latitude = parseFloat(query.latitude);
     query.distance = isNaN(query.distance) ? 300 : milesToMeters(parseFloat(query.distance));
-    return query;
-};
-
-StopsApiController.getMany = function (req, res, next) {
-    var query = queryCheck(req.query);
-
-    if (query === -1) {
-        return next(new errors.BadRequestError('Invalid query params: Expected both longitude and latitude'));
-    } else if (query === -2) {
-        return next(new errors.BadRequestError('Invalid query params: Expected numbers'));
-    }
 
     log('GET /stops');
     log(JSON.stringify(query));
     StopsApiController.model.getMany(query, function (err, stops) {
         if (err) {
-            log(err);
-            return next(new errors.InternalError('GET /stops failed'));
+            return next(errors('stop', err));
         }
         res.status(200);
         return res.json(stops);
@@ -48,14 +37,13 @@ StopsApiController.getOne = function (req, res, next) {
     var id = req.params.id;
 
     if (!id) {
-        return next(new errors.BadRequestError('Invalid stop id'));
+        return next(errors('stop', '400.0'));
     }
 
     log('GET /stops/' + id);
     StopsApiController.model.getOne(id, function (err, stop) {
         if (err) {
-            log(err);
-            return next(new errors.InternalError('GET /stops/' + id + ' failed.'));
+            return next(errors('stop', err));
         }
         res.status(200);
         return res.json(stop);

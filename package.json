@@ -1,7 +1,7 @@
 {
-  "name": "engine",
-  "version": "0.0.1",
-  "description": "Tool set and server bootstrap for vvps backend services / api.",
+  "name": "Muber-api",
+  "version": "0.1.0",
+  "description": "API for muber app",
   "main": "server.js",
   "scripts": {
     "test": "mocha --recursive test/",
