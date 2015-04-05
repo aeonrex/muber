@@ -4,6 +4,7 @@ var engine = require('rest-engine'),
     BaseApiController = engine.controllers.base,
     stopsModel = require('../models/stops'),
     StopsApiController = new BaseApiController(stopsModel),
+    maxDistance = engine.config.get('MAX_DISTANCE'),
     milesToMeters = require(process.cwd() + '/lib/conversions').milesToMeters,
     errors = require(process.cwd() + '/lib/errors');
 
@@ -20,6 +21,10 @@ StopsApiController.getMany = function (req, res, next) {
     query.longitude = parseFloat(query.longitude);
     query.latitude = parseFloat(query.latitude);
     query.distance = isNaN(query.distance) ? 300 : milesToMeters(parseFloat(query.distance));
+
+    if (query.distance > maxDistance) {
+        return next(errors('stop', '400.3'))
+    }
 
     log('GET /stops');
     log(JSON.stringify(query));

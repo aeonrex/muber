@@ -31,6 +31,10 @@
           "message": "Invalid query params: Expected numbers",
           "http": 400
         },
+        "400.3": {
+          "message": "Query Parameter: 'distance' exceeds the max.",
+          "http": 400
+        },
         "404.0": {
           "message": "Stop could not be found",
           "http": 404

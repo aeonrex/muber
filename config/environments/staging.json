@@ -1,4 +1,5 @@
 {
   "SERVER_PORT": 8080,
-  "DB_URI": "mongodb://muber-api:thed4t4ismine@ds045511.mongolab.com:45511/muber"
+  "DB_URI": "mongodb://muber-api-readonly:1onlyread@ds045511.mongolab.com:45511/muber",
+  "MAX_DISTANCE": 160934
 }
