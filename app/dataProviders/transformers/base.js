@@ -19,7 +19,6 @@ module.exports = {
 
     oneOut: function (result, resource) {
         result.self = link(result._id, resource);
-        result.id = result._id;
         delete result._id;
         return result;
     },
