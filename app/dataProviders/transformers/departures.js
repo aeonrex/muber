@@ -1,5 +1,6 @@
-var _ = require('rest-engine').util._,
+var util = require('rest-engine').util,
     base = require('./base'),
+    resource = 'departures',
     parseString = require('xml2js').parseString;
 
 
@@ -50,7 +51,9 @@ var manyOut = function (predictions, stopId) {
             return;
         }
         transform = jsonCleanup(res);
-        transform.stop = stopId;
+        transform.stop = base.link(stopId, 'stop');
+        transform.self = util.jsonCopy(transform.stop);
+        transform.self.href += '/' + resource;
     });
     return transform;
 };
