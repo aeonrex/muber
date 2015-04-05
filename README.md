@@ -4,7 +4,7 @@ Municipal transportation API. Data provided by (c) http://www.nextbus.com and it
 ## Break Down:
 Muber is built across three different repositories:
 
-* [muber](https://github.com/t4ks/muber) - Muber's RESTful API
+* [muber](https://github.com/t4ks/muber) - Muber's RESTful API - You are currently here!
 * [muber-frontent]() - Muber's web UI
 * [rest-engine](https://github.com/t4ks/rest-engine) - a wrapper/micro framework that makes it simple to spin up a RESTful service,
     built on top of [Restify](https://www.npmjs.com/package/restify)
