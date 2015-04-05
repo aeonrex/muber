@@ -49,12 +49,9 @@ var manyOut = function (predictions, stopId) {
             transform = null;
             return;
         }
-        console.log(JSON.stringify(res, null, '\t'));
-
         transform = jsonCleanup(res);
         transform.stop = stopId;
     });
-
     return transform;
 };
 

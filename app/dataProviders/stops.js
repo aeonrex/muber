@@ -1,5 +1,8 @@
 'use strict';
-var transformer = require('./transformers/stops');
+var log = require('rest-engine').util.log,
+    transformer = require('./transformers/stops'),
+    mongoose = require('rest-engine').mongoose;
+
 function StopsDataProvider(model) {
     this.model = model;
 }
@@ -26,9 +29,9 @@ StopsDataProvider.prototype.getMany = function (data, callback) {
             }
         }
     ], function (err, stops) {
-
         if (err) {
-            return callback(err);
+            log(err);
+            return callback('500.0');
         }
         callback(null, transformer.manyOut(stops, data));
     });
@@ -36,9 +39,16 @@ StopsDataProvider.prototype.getMany = function (data, callback) {
 };
 
 StopsDataProvider.prototype.getOne = function (id, callback) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return callback('400.0');
+    }
     this.model.findById(id, function (err, stop) {
         if (err) {
-            return callback(err);
+            log(err);
+            return callback('500.0');
+        }
+        if (!stop) {
+            return callback('404.0')
         }
         callback(null, transformer.oneOut(stop.toObject()));
     });
