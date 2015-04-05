@@ -1,3 +1,4 @@
 {
-  "DB_URI": "mongodb://localhost/muber"
+  "DB_URI": "mongodb://localhost/muber",
+  "MAX_DISTANCE": 160934
 }
