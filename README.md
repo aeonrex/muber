@@ -30,6 +30,24 @@ npm install && NODE_ENV=staging npm start
  * [X] Error handling
  * [X] build frontend
 
+
+### Functional Spec
+* Option one of coding challenge: "Create a service that gives real-time departure time for public transportation (use freely available public API). The app should geolocalize the user."
+* Serves Bus times and Bus stop locations via an RESTful JSON interface
+* Data is from a freely available public API [NextBus](http://www.nextbus.com)
+
+###Tech Spec
+* Node.js RESTful API built on top of [rest-engine](https://github.com/t4ks/rest-engine).
+* MongoDB for Bus Stop storage and querying.
+* Node and npm makes it really easy to decouple the app into multiple projects, along with easy deployments to [Heroku](https://www.heroku.com)
+* All data, whether piped from MongoDB or NextBus, goes through transformation in order to make consistent and formatted data to the clients
+
+###Additional
+* I developed rest-engine, as mentioned above. It makes declaring specific API and its routes a simple configuration and bootstraps onto correctly formatted projects.
+* I developed a Scraper to get static data and add its own database. There is no good reason to proxy all requests to NextBus.
+    * Specifically scraped all the stops.
+    * This allowed for a more custom data model and added ease for geo querying with MongoDB
+
 ##API Definitions
 
 ### /v1/stops
@@ -244,20 +262,3 @@ Response Body:
     }
 }
 ```
-
-### Functional Spec
-* Option one of coding challenge: "Create a service that gives real-time departure time for public transportation (use freely available public API). The app should geolocalize the user."
-* Serves Bus times and Bus stop locations via an RESTful JSON interface
-
-###Tech Spec
-* Data provider [NextBus](http://www.nextbus.com)
-* Node.js RESTful API built using on top of [rest-engine](https://github.com/t4ks/rest-engine). I have about 8 months experience with Node.js systems.
-* MongoDB for Bus Stop storage and querying.
-* Node and npm makes it really easy to decouple the app into multiple projects, along with easy deployments to [Heroku](https://www.heroku.com)
-* All data whether piped from Mongo or nextbus goes through transformation in order to make consistent and formatted data to the clients
-
-###Additional
-* I developed rest-engine, as mentioned above. It makes declaring specific API and its routes a simple configuration and bootstraps onto correctly formatted projects.
-* I developed a Scraper to get static data and add its own database. There is no good reason to proxy all requests to NextBus.
-    * Specifically scraped all the stops.
-    * This allowed for a more custom data model and added ease for geo querying with MongoDB
