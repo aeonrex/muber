@@ -34,6 +34,87 @@ describe('/v1/stops tester', function () {
             response.results.length.should.equal(response.count);
         });
 
+        it('Should get a single stop', function (done) {
+            var stop = response.results[0];
+
+            if (!stop) {
+                return done();
+            }
+
+            request
+                .get(stop.self.href)
+                .expect(200)
+                .end(function (err, res) {
+                    should.not.exist(err);
+                    should.exist(res);
+                    should.exist(res.body);
+                    should.exist(res.body.self);
+                    res.body.self.href.should.equal(stop.self.href);
+                    done();
+                });
+        });
+
+        it('Should 400 when GET /v1/stops/', function(done) {
+            request
+                .get('/v1/stops/')
+                .expect(400)
+                .end(function (err, res) {
+                    should.not.exist(err);
+                    done();
+                });
+        });
+
+        it('Should 400 when stop id is malformed', function(done) {
+            request
+                .get('/v1/stops/asdlkf')
+                .expect(400)
+                .end(function (err, res) {
+                    should.not.exist(err);
+                    done();
+                });
+        });
+
+
+        it('Should get a single stop\'s departures', function (done) {
+            var stop = response.results[0];
+
+            if (!stop) {
+                return done();
+            }
+
+            request
+                .get(stop.departures.href)
+                .expect(200)
+                .end(function (err, res) {
+                    should.not.exist(err);
+                    should.exist(res);
+                    should.exist(res.body);
+                    should.exist(res.body.self);
+                    res.body.self.href.should.equal(stop.departures.href);
+                    done();
+                });
+        });
+
+        it('Should 400 when GET /v1/stops/', function(done) {
+            request
+                .get('/v1/stops//departures')
+                .expect(400)
+                .end(function (err, res) {
+                    should.not.exist(err);
+                    done();
+                });
+        });
+
+        it('Should 400 when stop id is malformed', function(done) {
+            request
+                .get('/v1/stops/asdlkf/departures')
+                .expect(400)
+                .end(function (err, res) {
+                    should.not.exist(err);
+                    done();
+                });
+        });
+
         it('Should get a list of bus stops - long and lat as strings', function (done) {
             request
                 .get(uri)
@@ -105,6 +186,8 @@ describe('/v1/stops tester', function () {
                     done();
                 });
         });
+
+
     });
 
     describe('Errors', function () {
