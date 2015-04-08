@@ -15,12 +15,15 @@ StopsDataProvider.prototype.batchInsert = function (array, callback) {
 };
 
 StopsDataProvider.prototype.getMany = function (data, callback) {
+    var longitude = data.longitude;
+    var latitude = data.latitude;
+    var maxDistance = data.distance <= 0 ? 0.01 : data.distance;
     this.model.aggregate([
         {
             $geoNear: {
-                near: {type: "Point", coordinates: [data.longitude, data.latitude]},
+                near: {type: "Point", coordinates: [longitude, latitude]},
                 distanceField: "distance.calculated",
-                maxDistance: data.distance,
+                maxDistance: maxDistance,
                 minDistance: 0,
                 query: {},
                 includeLocs: "distance.location",
