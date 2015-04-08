@@ -51,7 +51,7 @@ var manyOut = function (predictions, stopId) {
             return;
         }
         transform = jsonCleanup(res);
-        transform.stop = base.link(stopId, 'stop');
+        transform.stop = base.link(stopId, 'stops');
         transform.self = util.jsonCopy(transform.stop);
         transform.self.href += '/' + resource;
     });
