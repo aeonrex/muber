@@ -1,11 +1,12 @@
 {
-  "name": "Muber-api",
+  "name": "MUber-api",
   "version": "0.1.0",
-  "description": "API for muber app",
+  "description": "API for MUber",
   "main": "server.js",
   "scripts": {
     "test": "mocha --recursive test/",
-    "start": "node server.js"
+    "start": "node server.js",
+    "scrape": "node scrape.js"
   },
   "author": "Taylor Kisor-Smith",
   "dependencies": {
