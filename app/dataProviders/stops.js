@@ -26,7 +26,6 @@ StopsDataProvider.prototype.getMany = function (data, callback) {
                 maxDistance: maxDistance,
                 minDistance: 0,
                 query: {},
-                includeLocs: "distance.location",
                 num: 100000,
                 spherical: true
             }

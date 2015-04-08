@@ -14,8 +14,6 @@ function coordinateTransform(coord) {
 
 function distanceTransform(distance) {
     distance.calculated = metersToMiles(distance.calculated);
-    delete distance.location.type;
-    distance.location.coordinates = coordinateTransform(distance.location.coordinates);
     return distance;
 }
 
