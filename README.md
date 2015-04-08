@@ -1,5 +1,9 @@
 # muber-api
-Municipal transportation API. Data is a Copyright (c) [NextBus](http://www.nextbus.com) and it's Associates
+Municipal transportation API. That solves the problem of giving real-time departure times for Bus's throughout the country.
+
+Focus is on the back-end.
+
+Data is a Copyright (c) [NextBus](http://www.nextbus.com) and it's Associates
 
 Project code: The MIT License (MIT) Copyright (c) 2015 Taylor Kisor-Smith
 
@@ -10,11 +14,11 @@ Muber is built across three different repositories:
 
 * [muber](https://github.com/t4ks/muber) - Muber's RESTful API - **You are currently here!**
 * [muber-ui](https://github.com/t4ks/muber-ui) - Muber's web UI
-* [rest-engine](https://github.com/t4ks/rest-engine) - a wrapper/micro framework that makes it simple to spin up a RESTful service,
-    built on top of [Restify](https://www.npmjs.com/package/restify)
+* [rest-engine](https://github.com/t4ks/rest-engine) - API engine and toolkit that bundles [restify](https://www.npmjs.com/package/restify),
+    [nconf](https://www.npmjs.com/package/nconf),[mongoose](http://mongoosejs.com/), and utilities
 
-I split it up this way to really show the separation between the client and the API. This is also why I choose a "smaller"
-framework - Restify, compared to using Express; I just wanted my API to be an API.
+I split it up this way to really show the separation between the client and the API. This is also why I choose Restify over a larger
+web application framework like Express; I just wanted my API to be an API.
 
 ### How to run:
 ```bash
