@@ -1,11 +1,11 @@
 'use strict';
 var should = require('should'),
-    supertest = require('supertest');
+    supertest = require('supertest'),
+    engine = require('rest-engine').bootstrap();
 
 describe('/v1/stops tester', function () {
-    var host = 'http://localhost:8080';
     var uri = '/v1/stops';
-    var request = supertest(host);
+    var request = supertest(engine);
 
 
     describe('GET many cases', function () {
