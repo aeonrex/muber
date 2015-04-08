@@ -17,8 +17,7 @@ Muber is built across three different repositories:
 * [rest-engine](https://github.com/t4ks/rest-engine) - API engine and toolkit that bundles [restify](https://www.npmjs.com/package/restify),
     [nconf](https://www.npmjs.com/package/nconf),[mongoose](http://mongoosejs.com/), and utilities
 
-I split it up this way to really show the separation between the client and the API. This is also why I choose Restify over a larger
-web application framework like Express; I just wanted my API to be an API.
+I split it up this way to really show the separation between the client and the API. It makes more maintainable and is good for modular deployments.
 
 ### How to run:
 ```bash
