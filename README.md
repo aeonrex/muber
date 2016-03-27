@@ -1,38 +1,17 @@
 # muber-api
 Municipal transportation API. That solves the problem of giving real-time departure times for Bus's throughout the country.
 
-Focus is on the back-end.
-
 Data is a Copyright (c) [NextBus](http://www.nextbus.com) and it's Associates
 
 Project code: The MIT License (MIT) Copyright (c) 2015 Taylor Kisor-Smith
 
 ##Live [Demo](https://api-muber.herokuapp.com/v1/stops?longitude=-122.417541&latitude=37.775245&distance=0.1)
 
-## Break Down:
-Muber is built across three different repositories:
-
-* [muber](https://github.com/t4ks/muber) - Muber's RESTful API - **You are currently here!**
-* [muber-ui](https://github.com/t4ks/muber-ui) - Muber's web UI
-* [rest-engine](https://github.com/t4ks/rest-engine) - API engine and toolkit that bundles [restify](https://www.npmjs.com/package/restify),
-    [nconf](https://www.npmjs.com/package/nconf),[mongoose](http://mongoosejs.com/), and utilities
-
-I split it up this way to really show the separation between the client and the API. It makes more maintainable and is good for modular deployments.
 
 ### How to run:
 ```bash
 npm install && NODE_ENV=staging npm start
 ```
-
-## TODO:
- * [X] stops end point need a stops/:id and stops get many
- * [X] need to be able to get by long lat -http://docs.mongodb.org/manual/reference/operator/query/near/
- * [X] scrape stops from nextbus
- * [X] figure out model for stops. currently it seems to be the only practical endpoint
- * [X] build predictions/departures api wrapper / endpoint
- * [X] Error handling
- * [X] build frontend
-
 
 ### Functional Spec
 * Option one of coding challenge: "Create a service that gives real-time departure time for public transportation (use freely available public API). The app should geolocalize the user."
@@ -40,16 +19,10 @@ npm install && NODE_ENV=staging npm start
 * Data is from a freely available public API [NextBus](http://www.nextbus.com)
 
 ###Tech Spec
-* Node.js RESTful API built on top of [rest-engine](https://github.com/t4ks/rest-engine).
+* Node.js RESTful API.
 * MongoDB for Bus Stop storage and querying.
-* Node and npm makes it really easy to decouple the app into multiple projects, along with easy deployments to [Heroku](https://www.heroku.com)
 * All data, whether piped from MongoDB or NextBus, goes through transformation in order to make consistent and formatted data to the clients
 
-###Additional
-* I developed rest-engine, as mentioned above. It makes declaring specific API and its routes a simple configuration and bootstraps onto correctly formatted projects.
-* I developed a Scraper to get static data and add its own database. There is no good reason to proxy all requests to NextBus.
-    * Specifically scraped all the stops.
-    * This allowed for a more custom data model and added ease for geo querying with MongoDB
 
 ##API Definitions
 
